@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Skye" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>JOYE— Weather</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Slideshow -->
+  <div class="bg-slider" id="bgSlider">
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1504608524841-42584120d693?w=1920&q=80')"></div>
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1920&q=80')"></div>
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1920&q=80')"></div>
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80')"></div>
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?w=1920&q=80')"></div>
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80')"></div>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="logo">
+      <span class="logo-icon">☁</span>
+      <span class="logo-text">JOYE</span>
+    </div>
+    <div class="top-controls">
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn" aria-label="Select language">
+          <span class="lang-flag" id="langFlag">🌐</span>
+          <span class="lang-label" id="langLabel">EN</span>
+          <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-option active" data-lang="en"><span>🇺🇸</span><span>English</span></button>
+          <button class="lang-option" data-lang="am"><span>🇪🇹</span><span>አማርኛ</span></button>
+          <button class="lang-option" data-lang="om"><span>🇪🇹</span><span>Afaan Oromoo</span></button>
+          <button class="lang-option" data-lang="so"><span>🇸🇴</span><span>Soomaali</span></button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon sun">☀</span>
+        <span class="theme-icon moon">☽</span>
+        <div class="toggle-thumb"></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Sign-In Card -->
+  <main class="signin-container">
+    <div class="signin-card" id="signinCard">
+      <div class="card-glow"></div>
+      <div class="brand-area">
+        <div class="brand-icon">☁</div>
+        <h1 class="brand-name">JOYE🕸</h1>
+        <p class="brand-tagline" id="brandTagline">Your world. Your weather.</p>
+      </div>
+      <div class="signin-actions">
+        <button class="btn-primary" id="btnSignIn">
+          <svg viewBox="0 0 24 24" class="btn-icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          <span id="signInText">Sign In</span>
+        </button>
+        <div class="divider"><span id="dividerText">or</span></div>
+        <button class="btn-ghost" id="btnGuest">
+          <svg viewBox="0 0 24 24" class="btn-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+          <span id="guestText">Continue as Guest</span>
+        </button>
+      </div>
+      <p class="signin-note" id="signinNote">
+        By continuing, you agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy</a>
+      </p>
+    </div>
+    <div class="slide-dots" id="slideDots"></div>
+  </main>
+
+  <!-- Auth Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="authModal">
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" data-tab="login">
+          <span id="tabLoginText">Sign In</span>
+        </button>
+        <button class="auth-tab" id="tabRegister" data-tab="register">
+          <span id="tabRegisterText">Register</span>
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form active" id="formLogin" novalidate>
+        <div class="field-group">
+          <label class="field-label" id="lblEmail">Email</label>
+          <input class="field-input" type="email" id="loginEmail" autocomplete="email" placeholder="you@example.com" required />
+          <span class="field-error" id="loginEmailErr"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" id="lblPassword">Password</label>
+          <div class="input-wrap">
+            <input class="field-input" type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••" required />
+            <button type="button" class="eye-btn" id="eyeLogin" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="loginPassErr"></span>
+        </div>
+        <button type="submit" class="btn-primary btn-full" id="btnLoginSubmit">
+          <span id="loginSubmitText">Sign In</span>
+        </button>
+        <p class="auth-switch" id="authSwitchLogin">
+          <span id="noAccountText">No account?</span>
+          <button type="button" class="link-btn" id="switchToRegister">
+            <span id="createOneText">Create one</span>
+          </button>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form" id="formRegister" novalidate>
+        <div class="field-group">
+          <label class="field-label" id="lblName">Full Name</label>
+          <input class="field-input" type="text" id="regName" autocomplete="name" placeholder="Your name" required />
+          <span class="field-error" id="regNameErr"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" id="lblRegEmail">Email</label>
+          <input class="field-input" type="email" id="regEmail" autocomplete="email" placeholder="you@example.com" required />
+          <span class="field-error" id="regEmailErr"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" id="lblRegPassword">Password</label>
+          <div class="input-wrap">
+            <input class="field-input" type="password" id="regPassword" autocomplete="new-password" placeholder="Min 6 characters" required />
+            <button type="button" class="eye-btn" id="eyeReg" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="regPassErr"></span>
+        </div>
+        <button type="submit" class="btn-primary btn-full" id="btnRegSubmit">
+          <span id="regSubmitText">Create Account</span>
+        </button>
+        <p class="auth-switch" id="authSwitchReg">
+          <span id="haveAccountText">Have an account?</span>
+          <button type="button" class="link-btn" id="switchToLogin">
+            <span id="signInLinkText">Sign in</span>
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
