@@ -22,33 +22,17 @@ A stunning Progressive Web App for real-time weather, global country exploration
 
 <div align="center">
 
-### 🏠 Landing Page
-<img src="screenshots/02-landing.png" width="480" alt="JOYE Landing Page" />
+| 🏠 Landing | 🔐 Register |
+|:---:|:---:|
+| <img src="screenshots/02-landing.png" width="380" alt="Landing Page" /> | <img src="screenshots/01-register.png" width="220" alt="Register Modal" /> |
 
-<br/>
+| 🌍 Country Search | 📋 Country Detail |
+|:---:|:---:|
+| <img src="screenshots/03-country-search.png" width="380" alt="Country Search" /> | <img src="screenshots/04-country-modal.png" width="320" alt="Country Modal" /> |
 
-### 🔐 Authentication
-<img src="screenshots/01-register.png" width="240" alt="Register Modal" />
-
-<br/>
-
-### 🌍 Country Explorer
-<img src="screenshots/03-country-search.png" width="480" alt="Country Search" />
-
-<br/>
-
-### 📋 Country Detail
-<img src="screenshots/04-country-modal.png" width="420" alt="Country Modal - Eritrea" />
-
-<br/>
-
-### 🤖 Joye AI Chatbot
-<img src="screenshots/06-joye-ai.png" width="260" alt="Joye AI Chat" />
-
-<br/>
-
-### 📊 Full Dashboard
-<img src="screenshots/07-dashboard.png" width="480" alt="Full Dashboard with Notifications" />
+| 🤖 Joye AI | 📊 Full Dashboard |
+|:---:|:---:|
+| <img src="screenshots/06-joye-ai.png" width="240" alt="Joye AI" /> | <img src="screenshots/07-dashboard.png" width="380" alt="Dashboard" /> |
 
 </div>
 
