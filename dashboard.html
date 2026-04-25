@@ -7,31 +7,22 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#0a0a0f" />
-  <title>Skye — Dashboard</title>
+  <title>JOYE — Dashboard</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
-
-  <!-- Dynamic weather background -->
   <div class="weather-bg" id="weatherBg"></div>
-  <div class="weather-overlay" id="weatherOverlay"></div>
-
-  <!-- Top Nav -->
+  <div class="weather-overlay"></div>
   <header class="dash-header">
-    <div class="dash-logo">
-      <span>☁</span>
-      <span class="logo-text">Skye</span>
-    </div>
+    <div class="dash-logo"><span>☁</span><span class="logo-text">JOYE</span></div>
     <div class="dash-controls">
-      <!-- Language -->
       <div class="lang-selector" id="langSelector">
-        <button class="lang-btn" id="langBtn" aria-label="Language">
-          <span id="langFlag">🌐</span>
-          <span id="langLabel">EN</span>
+        <button class="lang-btn" id="langBtn">
+          <span id="langFlag">🌐</span><span id="langLabel">EN</span>
           <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="lang-dropdown" id="langDropdown">
@@ -41,31 +32,26 @@
           <button class="lang-option" data-lang="so"><span>🇸🇴</span><span>Soomaali</span></button>
         </div>
       </div>
-      <!-- Theme -->
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="theme-icon sun">☀</span>
-        <span class="theme-icon moon">☽</span>
+      <button class="theme-toggle" id="themeToggle">
+        <span class="theme-icon sun">☀</span><span class="theme-icon moon">☽</span>
         <div class="toggle-thumb"></div>
       </button>
-      <!-- Notifications -->
-      <button class="icon-btn" id="notifBtn" aria-label="Notifications">
+      <button class="icon-btn" id="notifBtn">
         <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         <span class="notif-dot" id="notifDot"></span>
       </button>
-      <!-- User / Logout -->
-      <button class="icon-btn" id="userBtn" aria-label="User menu">
+      <button class="icon-btn" id="userBtn">
         <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- User menu dropdown -->
   <div class="user-menu" id="userMenu">
     <div class="user-info">
-      <div class="user-avatar" id="userAvatar">S</div>
+      <div class="user-avatar" id="userAvatar">G</div>
       <div>
         <div class="user-name" id="userNameDisplay">Guest</div>
-        <div class="user-email" id="userEmailDisplay">guest@skye.app</div>
+        <div class="user-email" id="userEmailDisplay">guest@joye.app</div>
       </div>
     </div>
     <hr class="menu-divider" />
@@ -79,15 +65,97 @@
     </button>
   </div>
 
-  <!-- Main Dashboard -->
+  <!-- Country Modal -->
+  <div class="cmodal-backdrop" id="cmodalBackdrop">
+    <div class="cmodal" id="cmodal">
+      <button class="cmodal-close" id="cmodalClose">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div id="cmodalInner"></div>
+    </div>
+  </div>
+
+  <!-- Notification Panel -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-panel-header">
+      <span class="notif-panel-title">🔔 Notifications</span>
+      <button class="notif-panel-clear" id="notifClear">Clear all</button>
+    </div>
+    <div class="notif-list" id="notifList">
+      <div class="notif-empty">No notifications yet. Enable walk alerts to get notified!</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- AI Chatbot FAB -->
+  <button class="chat-fab" id="chatFab" aria-label="Open AI assistant">
+    <span>🤖</span>
+    <span class="chat-fab-dot"></span>
+  </button>
+
+  <!-- AI Chatbot Panel -->
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-info">
+        <span class="chat-panel-avatar">🤖</span>
+        <div>
+          <div class="chat-panel-name">Joye AI</div>
+          <div class="chat-panel-status">● Online — always here</div>
+        </div>
+      </div>
+      <button class="chat-panel-close" id="chatPanelClose">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <span class="chat-msg-avatar">🤖</span>
+        <div class="chat-bubble">Hey! I'm Joye AI 👋 Ask me anything — weather, how to use the app, country info, forecasts. I got you!</div>
+      </div>
+    </div>
+    <div class="chat-chips" id="chatChips">
+      <button class="chat-chip">How do I search a country?</button>
+      <button class="chat-chip">What's the weather now?</button>
+      <button class="chat-chip">What does UV index mean?</button>
+      <button class="chat-chip">How do walk alerts work?</button>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Ask me anything…" autocomplete="off" />
+      <button class="chat-send" id="chatSend">
+        <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+
   <main class="dash-main" id="dashMain">
 
-    <!-- Location + Time -->
+    <!-- Country Explorer -->
+    <section class="explore-section">
+      <div class="explore-label">🌍 Explore Any Country</div>
+      <div class="explore-wrap" id="exploreWrap">
+        <svg class="explore-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="explore-input" id="exploreInput" type="text" placeholder="Search country… e.g. Japan, Brazil, Ethiopia" autocomplete="off" />
+        <button class="explore-clear" id="exploreClear" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="explore-results" id="exploreResults"></div>
+    </section>
+
+    <!-- Location + City Search -->
     <section class="location-section">
+      <div class="search-wrap" id="citySearchWrap">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-input" id="citySearch" type="text" placeholder="Search city…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
       <div class="location-row">
         <svg class="loc-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <span class="location-name" id="locationName">Detecting location…</span>
-        <button class="refresh-btn" id="refreshBtn" aria-label="Refresh">
+        <button class="refresh-btn" id="refreshBtn">
           <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
         </button>
       </div>
@@ -101,37 +169,33 @@
       <div class="temp-display">
         <span class="temp-value" id="tempValue">--</span>
         <div class="temp-unit-toggle">
-          <button class="unit-btn active" id="btnC" data-unit="C">°C</button>
-          <button class="unit-btn" id="btnF" data-unit="F">°F</button>
+          <button class="unit-btn active" id="btnC">°C</button>
+          <button class="unit-btn" id="btnF">°F</button>
         </div>
       </div>
       <div class="weather-desc" id="weatherDesc">Loading…</div>
       <div class="weather-meta">
         <div class="meta-item">
           <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/></svg>
-          <span id="feelsLike">--°</span>
-          <small id="feelsLikeLabel">Feels like</small>
+          <span id="feelsLike">--°</span><small id="feelsLikeLabel">Feels like</small>
         </div>
         <div class="meta-item">
           <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
-          <span id="humidity">--%</span>
-          <small id="humidityLabel">Humidity</small>
+          <span id="humidity">--%</span><small id="humidityLabel">Humidity</small>
         </div>
         <div class="meta-item">
           <svg viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
-          <span id="windSpeed">-- km/h</span>
-          <small id="windLabel">Wind</small>
+          <span id="windSpeed">-- km/h</span><small id="windLabel">Wind</small>
         </div>
         <div class="meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <span id="uvIndex">--</span>
-          <small id="uvLabel">UV Index</small>
+          <span id="uvIndex">--</span><small id="uvLabel">UV Index</small>
         </div>
       </div>
     </section>
 
-    <!-- Outfit Suggestion -->
-    <section class="outfit-card" id="outfitCard">
+    <!-- Outfit -->
+    <section class="outfit-card">
       <div class="outfit-header">
         <span class="outfit-emoji" id="outfitEmoji">👕</span>
         <div>
@@ -143,8 +207,8 @@
       <div class="outfit-tags" id="outfitTags"></div>
     </section>
 
-    <!-- Walk Suggestion -->
-    <section class="walk-card" id="walkCard">
+    <!-- Walk -->
+    <section class="walk-card">
       <div class="walk-header">
         <span class="walk-emoji">🚶</span>
         <div>
@@ -156,19 +220,19 @@
       <p class="walk-text" id="walkText">Analyzing conditions…</p>
     </section>
 
-    <!-- Hourly Forecast -->
+    <!-- Hourly -->
     <section class="forecast-section">
       <h2 class="section-title" id="hourlyTitle">Hourly</h2>
       <div class="hourly-scroll" id="hourlyScroll"></div>
     </section>
 
-    <!-- 7-Day Forecast -->
+    <!-- 7-Day -->
     <section class="forecast-section">
       <h2 class="section-title" id="weeklyTitle">7-Day Forecast</h2>
       <div class="weekly-list" id="weeklyList"></div>
     </section>
 
-    <!-- Sun Times -->
+    <!-- Sun -->
     <section class="sun-card">
       <div class="sun-item">
         <span>🌅</span>
@@ -177,9 +241,7 @@
           <div class="sun-time" id="sunriseTime">--:--</div>
         </div>
       </div>
-      <div class="sun-arc">
-        <div class="sun-progress" id="sunProgress"></div>
-      </div>
+      <div class="sun-arc"><div class="sun-progress" id="sunProgress"></div></div>
       <div class="sun-item">
         <span>🌇</span>
         <div>
@@ -191,12 +253,11 @@
 
   </main>
 
-  <!-- Loading Overlay -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-icon">☁</div>
     <div class="loading-text" id="loadingText">Getting your weather…</div>
   </div>
 
-  <script src="dashboard.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
