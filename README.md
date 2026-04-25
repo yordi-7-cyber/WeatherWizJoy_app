@@ -23,32 +23,32 @@ A stunning Progressive Web App for real-time weather, global country exploration
 <div align="center">
 
 ### 🏠 Landing Page
-<img src="screenshots/02-landing.png" width="800" alt="JOYE Landing Page" />
+<img src="screenshots/02-landing.png" width="480" alt="JOYE Landing Page" />
 
 <br/>
 
 ### 🔐 Authentication
-<img src="screenshots/01-register.png" width="400" alt="Register Modal" />
+<img src="screenshots/01-register.png" width="240" alt="Register Modal" />
 
 <br/>
 
 ### 🌍 Country Explorer
-<img src="screenshots/03-country-search.png" width="800" alt="Country Search" />
+<img src="screenshots/03-country-search.png" width="480" alt="Country Search" />
 
 <br/>
 
 ### 📋 Country Detail
-<img src="screenshots/04-country-modal.png" width="700" alt="Country Modal - Eritrea" />
+<img src="screenshots/04-country-modal.png" width="420" alt="Country Modal - Eritrea" />
 
 <br/>
 
 ### 🤖 Joye AI Chatbot
-<img src="screenshots/06-joye-ai.png" width="420" alt="Joye AI Chat" />
+<img src="screenshots/06-joye-ai.png" width="260" alt="Joye AI Chat" />
 
 <br/>
 
 ### 📊 Full Dashboard
-<img src="screenshots/07-dashboard.png" width="800" alt="Full Dashboard with Notifications" />
+<img src="screenshots/07-dashboard.png" width="480" alt="Full Dashboard with Notifications" />
 
 </div>
 
