@@ -8,10 +8,11 @@
 
 A stunning Progressive Web App for real-time weather, global country exploration, and AI-powered assistance — built with zero dependencies, pure HTML, CSS & JavaScript.
 
-[![Version](https://img.shields.io/badge/version-1.0.0-6366f1?style=flat-square)](https://github.com)
-[![PWA](https://img.shields.io/badge/PWA-ready-4ade80?style=flat-square)](https://github.com)
+[![Version](https://img.shields.io/badge/version-1.0.0-6366f1?style=flat-square)](https://joyceweatherapp.vercel.app)
+[![PWA](https://img.shields.io/badge/PWA-ready-4ade80?style=flat-square)](https://joyceweatherapp.vercel.app)
 [![License](https://img.shields.io/badge/license-MIT-f0ede8?style=flat-square)](LICENSE)
-[![Languages](https://img.shields.io/badge/languages-4-fbbf24?style=flat-square)](https://github.com)
+[![Languages](https://img.shields.io/badge/languages-4-fbbf24?style=flat-square)](https://joyceweatherapp.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-joyceweatherapp.vercel.app-6366f1?style=for-the-badge)](https://joyceweatherapp.vercel.app)
 
 </div>
 
@@ -117,6 +118,8 @@ JOYE Weather/
 
 ## ⚡ Getting Started
 
+> **🌐 Try it live → [joyceweatherapp.vercel.app](https://joyceweatherapp.vercel.app)**
+
 No build step, no dependencies, no config. Just open and run.
 
 ```bash
@@ -194,5 +197,7 @@ MIT License — free to use, modify, and distribute.
 <div align="center">
 
 Made with ☁ and a lot of ☕ — **JOYE Weather v1.0**
+
+**[🚀 Open the App](https://joyceweatherapp.vercel.app)**
 
 </div>
